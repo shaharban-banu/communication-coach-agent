@@ -31,8 +31,8 @@ class Settings(BaseSettings):
 
     api_v1_prefix: str = "/api/v1"
 
-    llm_provider: str = ""
-    llm_model: str = ""
+    llm_provider: str = "groq"
+    llm_model: str = "openai/gpt-oss-20b"
     llm_api_key: str = ""
 
     log_level: str = "INFO"

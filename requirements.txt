@@ -8,3 +8,6 @@ python-dotenv
 
 # Testing
 pytest
+
+#LLM
+groq
