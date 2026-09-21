@@ -135,3 +135,12 @@ class ChatHistoryResponse(BaseModel):
     messages: list[ChatHistoryMessage] = Field(
         default_factory=list,
     )
+
+class MetricsResponse(BaseModel):
+    """API monitoring metrics."""
+
+    total_requests: int
+    successful_requests: int
+    failed_requests: int
+    error_rate: float
+    average_response_time: float

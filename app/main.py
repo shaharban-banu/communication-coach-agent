@@ -17,6 +17,8 @@ from app.api.exception_handlers import (
 )
 from app.core.exceptions import CommunicationCoachException
 from app.api.routes.chat_history import router as chat_history_router
+from app.api.middleware import RequestLoggingMiddleware
+from app.api.routes.metrics import router as metrics_router
 
 setup_logging()
 
@@ -32,6 +34,8 @@ app = FastAPI(
     version="0.1.0",
     debug=settings.debug,
 )
+
+app.add_middleware(RequestLoggingMiddleware)
 app.add_exception_handler(
     CommunicationCoachException,
     communication_coach_exception_handler,
@@ -57,5 +61,9 @@ app.include_router(
 )
 app.include_router(
     chat_history_router,
+    prefix=settings.api_v1_prefix,
+)
+app.include_router(
+    metrics_router,
     prefix=settings.api_v1_prefix,
 )
