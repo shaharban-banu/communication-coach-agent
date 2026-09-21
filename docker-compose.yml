@@ -1,0 +1,11 @@
+services:
+  communication-coach-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: communication-coach-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
